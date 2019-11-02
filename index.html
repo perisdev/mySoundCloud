@@ -16,8 +16,8 @@
     <!-- NAV -->
     <nav>
       <img src="./img/lens.png" alt="" class="lens">
-      <input type="text" class="search" placeholder="Song, Artist, Album, ...">
-      <button class="btSearch">Search..</button>
+      <input type="text" class="search" id="search" placeholder="Song, Artist, Album, ...">
+      <button class="btSearch" id="btSearch">Search..</button>
     </nav>
 
     <!-- DETAILs-->
@@ -29,11 +29,22 @@
 
     <!-- RESULTs-->
     <section class="results">
-      <div class="list"></div>
-    </section>
+      <div class="track_head">
+        <span></span>
+        <p><strong>TITTLE</strong></p>
+        <p><strong>ARTIST</strong></p>
+      </div>
+      <div class="list" id="list">
+        <!-- start - template -->
+        <div class="track">
+          <img src="./img/noCover.png" alt="" class="track_img">
+          <p>Police of truth</p>
+          <p>Depeche Mode</p>
+        </div>
+        <!-- end - template -->
 
-    <!-- FOOTER -->
-    <footer></footer>
+      </div>
+    </section>
   </main>
 
   <script src="./vendor/soundcloud_sdk-3.3.2.js"></script>

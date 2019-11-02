@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 :root {
-  --navbackground: #363232;
+  --graySpotify: #202020;
+  --greenSpotify: #1ed760;
   --searchBackground: #000;
-  --fontColor: #666060;
-  --resultbackground: #363232;
-  --detailbackground: #363232;
+  --backList: #101010;
+  --borderColor: #252525;
 }
 
 * {
@@ -14,33 +15,35 @@
 
 body {
   background: #000;
-  color: var(--fontColor)
+  color: var(--fontColor);
+  font-family: 'Quicksand', sans-serif;
 }
 
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.1fr 1fr 0.05fr;
-  grid-template-areas: 'details nav' 'details results' 'footer footer';
+  grid-template-rows: 100px 1fr;
+  grid-template-areas: 'details nav' 'details results';
   width: 100%;
   height: 100vh;
 }
 
 /* nav section
 ------------------------------*/
+
 nav {
   grid-area: nav;
   background: transparent;
   display: flex;
-  padding: 5px 5px 5px 2px;
-
+  padding: 5px 5px 10px 2px;
   min-width: 512xp;
+  /* max-height: 0.1fr; */
 }
 
 .lens {
-  width: 10%;
-  min-width: 30px;
-  border: 1px solid var(--fontColor);
+  width: 70px;
+  min-width: 70px;
+  border: 1px solid var(--borderColor);
   border-right: none;
   border-radius: 10px 0 0 10px;
   background: var(--searchBackground);
@@ -50,9 +53,11 @@ nav {
   width: 80%;
   background: var(--searchBackground);
   color: var(--fontColor);
-  border: 1px solid var(--fontColor);
+  /* border: 1px solid var(--fontColor); */
+  border: 1px solid var(--borderColor);
   border-left: none;
   outline: none;
+  font-size: 1.1rem;
 }
 
 .search:hover {
@@ -62,11 +67,12 @@ nav {
 .btSearch {
   width: 14%;
   min-width: 50px;
-  border: 1px solid var(--fontColor);
+  border: none;
   outline: none;
   border-radius: 0 10px 10px 0;
-  background: var(--fontColor);
-  color: #000;
+  background: var(--greenSpotify);
+  color: #fff;
+  font-size: 1.1rem;
 }
 
 .btSearch:hover {
@@ -76,11 +82,13 @@ nav {
 
 /* details section
 ------------------------------*/
+
 .details {
   grid-area: details;
   background: transparent;
   padding: 5px 5px 5px 5px;
   min-width: 512xp;
+  max-height: 100vh;
 }
 
 .detail {
@@ -88,11 +96,10 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   height: 100%;
   width: 100%;
   background: var(--searchBackground);
-  border: 1px solid var(--fontColor);
+  border: 1px solid var(--borderColor);
   border-radius: 10px;
 }
 
@@ -103,22 +110,63 @@ nav {
 
 /* results section
 ------------------------------*/
+
 .results {
   grid-area: results;
   background: transparent;
-  padding: 5px 5px 5px 2px;
+  padding: 0px 5px 5px 2px;
+}
+
+.track_head {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  align-items: center;
+  background: var(--backList);
+  height: 60px;
+  border-bottom: 1px solid var(--borderColor);
+  /* border-radius: 10px 0px; */
 }
 
 .list {
-  height: 100%;
+  overflow: auto;
+  height: calc(100vh - 165px);
+  max-height: calc(100vh - 165px);
   width: 100%;
-  /* background: #999999; */
-  /* background: var(--searchBackground); */
-  border-bottom: 1px solid var(--fontColor);
+  background: var(--backList);
+  border-radius: 0px 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* footer
------------------------------*/
-footer {
-  grid-area: footer;
+.track {
+  width: 100%;
+  height: 75px;
+  min-height: 75px;
+  border-bottom: 1px solid var(--borderColor);
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  align-items: center;
+}
+
+.track:hover {
+  background: var(--graySpotify);
+  cursor: pointer;
+}
+
+.track_img {
+  height: 60px;
+  border-radius: 2px;
+}
+
+p {
+  overflow: hidden;
+  max-height: 70px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+strong {
+  font-size: 1rem;
+  color: var(--greenSpotify);
 }
