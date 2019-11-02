@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Santi Peris, perisdev" />
+  <title>mySoundCloud</title>
+
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+  <main>
+    <!-- NAV -->
+    <nav>
+      <img src="./img/lens.png" alt="" class="lens">
+      <input type="text" class="search" placeholder="Song, Artist, Album, ...">
+      <button class="btSearch">Search..</button>
+    </nav>
+
+    <!-- DETAILs-->
+    <section class="details">
+      <div class="detail">
+        <img src="./img/disco.png" alt="" class="player">
+      </div>
+    </section>
+
+    <!-- RESULTs-->
+    <section class="results">
+      <div class="list"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer></footer>
+  </main>
+
+  <script src="./vendor/soundcloud_sdk-3.3.2.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>

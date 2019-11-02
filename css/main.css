@@ -1,0 +1,124 @@
+:root {
+  --navbackground: #363232;
+  --searchBackground: #000;
+  --fontColor: #666060;
+  --resultbackground: #363232;
+  --detailbackground: #363232;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: var(--fontColor)
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.1fr 1fr 0.05fr;
+  grid-template-areas: 'details nav' 'details results' 'footer footer';
+  width: 100%;
+  height: 100vh;
+}
+
+/* nav section
+------------------------------*/
+nav {
+  grid-area: nav;
+  background: transparent;
+  display: flex;
+  padding: 5px 5px 5px 2px;
+
+  min-width: 512xp;
+}
+
+.lens {
+  width: 10%;
+  min-width: 30px;
+  border: 1px solid var(--fontColor);
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  background: var(--searchBackground);
+}
+
+.search {
+  width: 80%;
+  background: var(--searchBackground);
+  color: var(--fontColor);
+  border: 1px solid var(--fontColor);
+  border-left: none;
+  outline: none;
+}
+
+.search:hover {
+  outline: none;
+}
+
+.btSearch {
+  width: 14%;
+  min-width: 50px;
+  border: 1px solid var(--fontColor);
+  outline: none;
+  border-radius: 0 10px 10px 0;
+  background: var(--fontColor);
+  color: #000;
+}
+
+.btSearch:hover {
+  outline: none;
+  cursor: pointer;
+}
+
+/* details section
+------------------------------*/
+.details {
+  grid-area: details;
+  background: transparent;
+  padding: 5px 5px 5px 5px;
+  min-width: 512xp;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+  background: var(--searchBackground);
+  border: 1px solid var(--fontColor);
+  border-radius: 10px;
+}
+
+.player {
+  width: 512px;
+  height: 512px;
+}
+
+/* results section
+------------------------------*/
+.results {
+  grid-area: results;
+  background: transparent;
+  padding: 5px 5px 5px 2px;
+}
+
+.list {
+  height: 100%;
+  width: 100%;
+  /* background: #999999; */
+  /* background: var(--searchBackground); */
+  border-bottom: 1px solid var(--fontColor);
+}
+
+/* footer
+-----------------------------*/
+footer {
+  grid-area: footer;
+}
