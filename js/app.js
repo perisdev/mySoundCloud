@@ -8,12 +8,13 @@ let currentStream = null;
 
 /* CLASSEs */
 class Track {
-  constructor(artist, title, track, duration, cover) {
+  constructor(artist, title, track, duration, cover, release_year) {
     this.artist = artist;
     this.title = title;
     this.track = track;
     this.duration = duration;
     this.cover = cover;
+    this.release_year = release_year;
     this.views = {
       0: null,  // result list view
       1: {
@@ -61,6 +62,25 @@ const search = (input) => {
   });
 }
 
+/** my rotate control --------------------------------------*/
+const rotateCover = (angle) => {
+  let lastCoverPos = angle;
+  let lastAxisPos = 0;
+
+  return setInterval(() => {
+    if (lastCoverPos == 360){
+      lastCoverPos = 0;
+      lastAxisPos = 0;
+    } else {
+      lastCoverPos++;
+      lastAxisPos--;
+    }
+ 
+    document.getElementById("cover").style.transform = `rotate(${lastCoverPos}deg)`;
+    document.getElementById("axis").style.transform = `rotate(${lastAxisPos}deg)`;
+  }, 6);
+}
+
 /** myStream control --------------------------------------*/
 const newStream = track => {
   let newStream = SC.stream(`/tracks/${track}`);
@@ -97,9 +117,11 @@ const newStream = track => {
   ----------------------------------------------------------*/
 SC.initialize({
   client_id: 'aa06b0630e34d6055f9c6f8beb8e02eb',
-  // redirect_uri: 'https://localhost:5500/'
 });
 
+
+// let myPlay = rotateCover(0);
+// clearInterval(myPlay);
 
 /* LISTENERs
   --------------------------------------------------------- */

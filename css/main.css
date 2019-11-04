@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 :root {
+  --fontSearch: #8d8d8d;
   --graySpotify: #202020;
   --greenSpotify: #1ed760;
   --searchBackground: #000;
   --backList: #101010;
   --borderColor: #252525;
+  --BarTime: #808080;
 }
 
 * {
@@ -22,8 +24,8 @@ body {
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100px 1fr;
-  grid-template-areas: 'details nav' 'details results';
+  grid-template-rows: 90px calc(100vh - 90px);
+  grid-template-areas: 'left nav' 'left results';
   width: 100%;
   height: 100vh;
 }
@@ -35,14 +37,17 @@ nav {
   grid-area: nav;
   background: transparent;
   display: flex;
-  padding: 5px 5px 10px 2px;
-  min-width: 512xp;
-  /* max-height: 0.1fr; */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px 0 0;
 }
 
 .lens {
-  width: 70px;
-  min-width: 70px;
+  width: 10%;
+  min-width: 60px;
+  height: 70px;
   border: 1px solid var(--borderColor);
   border-right: none;
   border-radius: 10px 0 0 10px;
@@ -51,9 +56,9 @@ nav {
 
 .search {
   width: 80%;
+  height: 70px;
   background: var(--searchBackground);
-  color: var(--fontColor);
-  /* border: 1px solid var(--fontColor); */
+  color: var(--fontSearch);
   border: 1px solid var(--borderColor);
   border-left: none;
   outline: none;
@@ -65,8 +70,9 @@ nav {
 }
 
 .btSearch {
-  width: 14%;
-  min-width: 50px;
+  width: 10%;
+  min-width: 60px;
+  height: 70px;
   border: none;
   outline: none;
   border-radius: 0 10px 10px 0;
@@ -83,29 +89,144 @@ nav {
 /* details section
 ------------------------------*/
 
-.details {
-  grid-area: details;
-  background: transparent;
-  padding: 5px 5px 5px 5px;
-  min-width: 512xp;
-  max-height: 100vh;
-}
-
-.detail {
+.left {
+  grid-area: left;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  padding: 10px 10px 5px 2px;
+}
+
+.wrapper {
+  border: 1px solid var(--graySpotify);
+  border-radius: 10px 0 0 10px;
   width: 100%;
-  background: var(--searchBackground);
-  border: 1px solid var(--borderColor);
-  border-radius: 10px;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 70px 1fr 25px;
+}
+
+.brand {
+  background: var(--backList);
+  border-radius: 10px 0 0 0;
+}
+
+footer {
+  margin-left: 10px;
+  color: var(--greenSpotify);
+  font-size: 0.9rem;
 }
 
 .player {
-  width: 512px;
-  height: 512px;
+  display: grid;
+  grid-template-columns: 0.5fr 432px 1fr;
+  grid-template-rows: 1fr 300px 0.4fr;
+  grid-template-areas: 'detail detail detail' '   .    disk    .   ' '   .  control control';
+  justify-content: center;
+  min-width: 600px;
+}
+
+.detail {
+  grid-area: detail;
+  /* margin: 30px 10px 10px 10px; */
+
+  border-bottom: 1px solid var(--borderColor);
+
+  display: grid;
+  grid-template-columns: 200px 2fr 1fr;
+  grid-template-rows: 75px 75px;
+  grid-template-areas: 'dCover artist year' 'dCover title   .';
+  grid-gap: 10px;
+
+  /* align-items: center; */
+  align-content: center;
+}
+
+.dt {
+  color: var(--BarTime);
+}
+
+.dCover {
+  grid-area: dCover;
+  justify-self: center;
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.artist {
+  grid-area: artist
+}
+
+.title {
+  grid-area: title;
+}
+
+.year {
+  grid-area: year;
+}
+
+.disk {
+  grid-area: disk;
+  /* background: lightslategray; */
+  /* background-image: url('../img/disco.png'); */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover {
+  /* background-image: url('../img/ultra.jpg'); */
+  width: 33%;
+  height: 47.5%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.axis {
+  width: 37%;
+  height: 37%;
+}
+
+.controls {
+  grid-area: control;
+  display: grid;
+  grid-template-columns: 70px 292px 70px 100px;
+  align-items: center;
+}
+
+.time {
+  height: 25px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--BarTime);
+}
+
+.barTime {
+  border: 1px solid var(--BarTime);
+  height: 30px;
+  width: 100%;
+  background-image: url('../img/bar.png');
+  background-repeat: no-repeat;
+  background-size: 10% 29px;
+}
+
+.play {
+  /* align-self: start; */
+  justify-self: center;
+  /* border: 1px solid var(--BarTime); */
+  height: 55px;
+  width: 60px;
+  background-image: url('../img/PlayPause.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 /* results section
@@ -114,39 +235,40 @@ nav {
 .results {
   grid-area: results;
   background: transparent;
-  padding: 0px 5px 5px 2px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 0.1fr 1fr;
 }
 
 .track_head {
   width: 100%;
+  height: 100%;
   display: grid;
-  grid-template-columns: 100px 1fr 1fr;
+  grid-template-columns: 50px 1fr 1fr;
+  column-gap: 20px;
   align-items: center;
   background: var(--backList);
-  height: 60px;
   border-bottom: 1px solid var(--borderColor);
-  /* border-radius: 10px 0px; */
 }
 
 .list {
   overflow: auto;
-  height: calc(100vh - 165px);
-  max-height: calc(100vh - 165px);
+  height: calc(100% - 5px);
   width: 100%;
   background: var(--backList);
-  border-radius: 0px 10px;
   display: flex;
   flex-direction: column;
 }
 
 .track {
   width: 100%;
-  height: 75px;
-  min-height: 75px;
+  min-height: 60px;
   border-bottom: 1px solid var(--borderColor);
   display: grid;
-  grid-template-columns: 100px 1fr 1fr;
+  grid-template-columns: 50px 1fr 1fr;
   align-items: center;
+  column-gap: 20px;
 }
 
 .track:hover {
@@ -155,18 +277,19 @@ nav {
 }
 
 .track_img {
-  height: 60px;
+  height: 50px;
+  width: 50px;
   border-radius: 2px;
 }
 
 p {
   overflow: hidden;
-  max-height: 70px;
-  font-size: 1rem;
+  max-height: 100%;
+  font-size: 100%;
   color: #fff;
 }
 
 strong {
-  font-size: 1rem;
+  font-size: 100%;
   color: var(--greenSpotify);
 }
