@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
 :root {
   --fontSearch: #8d8d8d;
   --graySpotify: #202020;
@@ -30,9 +31,8 @@ main {
   height: 100vh;
 }
 
-/* nav section
+/* NAV section
 ------------------------------*/
-
 nav {
   grid-area: nav;
   background: transparent;
@@ -86,9 +86,8 @@ nav {
   cursor: pointer;
 }
 
-/* details section
+/* LEFT
 ------------------------------*/
-
 .left {
   grid-area: left;
   width: 100%;
@@ -98,48 +97,56 @@ nav {
   padding: 10px 10px 5px 2px;
 }
 
-.wrapper {
+.wrapper1 {
   border: 1px solid var(--graySpotify);
   border-radius: 10px 0 0 10px;
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 70px 1fr 25px;
+  grid-template-rows: 80px 1fr;
 }
 
-.brand {
+
+/* LOGO section
+------------------------------*/
+.logoWrapper {
   background: var(--backList);
   border-radius: 10px 0 0 0;
 }
 
-footer {
-  margin-left: 10px;
-  color: var(--greenSpotify);
-  font-size: 0.9rem;
+.logo {
+  margin: 10px 0 0 10px;
+  height: 70%;
 }
 
-.player {
+.logoText {
+  margin: 10px 0 0 0;
+  height: 20px;
+}
+
+
+.wrapper2 {
   display: grid;
-  grid-template-columns: 0.5fr 432px 1fr;
-  grid-template-rows: 1fr 300px 0.4fr;
-  grid-template-areas: 'detail detail detail' '   .    disk    .   ' '   .  control control';
+  grid-template-columns: 1fr 432px 1fr;
+  grid-template-rows: 1fr 300px 0.3fr;
+  grid-template-areas: 'detail detail detail' '   .    disk    .   ' 'controls controls controls ';
   justify-content: center;
   min-width: 600px;
 }
 
+/* DETAILs section
+------------------------------*/
 .detail {
   grid-area: detail;
-  /* margin: 30px 10px 10px 10px; */
 
   border-bottom: 1px solid var(--borderColor);
+  margin-bottom: 20px;
 
   display: grid;
   grid-template-columns: 200px 2fr 1fr;
-  grid-template-rows: 75px 75px;
+  grid-template-rows: 70px 70px;
   grid-template-areas: 'dCover artist year' 'dCover title   .';
   grid-gap: 10px;
-
-  /* align-items: center; */
   align-content: center;
 }
 
@@ -150,8 +157,8 @@ footer {
 .dCover {
   grid-area: dCover;
   justify-self: center;
-  height: 150px;
-  width: 150px;
+  height: 140px;
+  width: 140px;
   border-radius: 5px;
 }
 
@@ -167,10 +174,12 @@ footer {
   grid-area: year;
 }
 
+
+/* DISK section
+------------------------------*/
 .disk {
   grid-area: disk;
-  /* background: lightslategray; */
-  /* background-image: url('../img/disco.png'); */
+  background-image: url('../img/disco.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -179,7 +188,7 @@ footer {
 }
 
 .cover {
-  /* background-image: url('../img/ultra.jpg'); */
+  background-image: url('../img/noCover.png');
   width: 33%;
   height: 47.5%;
   background-repeat: no-repeat;
@@ -195,10 +204,20 @@ footer {
   height: 37%;
 }
 
+/* CONTROLs section
+------------------------------*/
 .controls {
-  grid-area: control;
+  grid-area: controls;
+
   display: grid;
-  grid-template-columns: 70px 292px 70px 100px;
+  grid-template-columns: 1fr 432px 1fr;
+  grid-template-areas: 'start bar play';
+}
+
+.bar {
+  grid-area: bar;
+  display: grid;
+  grid-template-columns: 70px 292px 70px;
   align-items: center;
 }
 
@@ -215,23 +234,33 @@ footer {
   width: 100%;
   background-image: url('../img/bar.png');
   background-repeat: no-repeat;
-  background-size: 10% 29px;
+  background-size: 0% 29px;
+  cursor: pointer;
+}
+
+.play, .start {
+  align-self: center;
+  height: 55px;
+  width: 60px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
 }
 
 .play {
-  /* align-self: start; */
-  justify-self: center;
-  /* border: 1px solid var(--BarTime); */
-  height: 55px;
-  width: 60px;
-  background-image: url('../img/PlayPause.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  grid-area: play;
+  justify-self: start;
+  background-image: url('../img/playPause.png');
 }
 
-/* results section
-------------------------------*/
+.start {
+  grid-area: start;
+  justify-self: end;
+  background-image: url('../img/start.png');
+}
 
+/* RESULTs section
+------------------------------*/
 .results {
   grid-area: results;
   background: transparent;

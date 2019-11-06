@@ -20,44 +20,53 @@
       <button class="btSearch" id="btSearch">Search</button>
     </nav>
 
-    <!-- DETAILs & PLAYER -->
+    <!-- LEFT -->
     <section class="left">
-      <div class="wrapper">
-        <div class="brand"></div>
-        <div class="player">
-
-          <div class="detail">
-            <!-- dynamic -->
-            <!-- <img src="./img/noCover.png" alt="" class="dCover">
+      <div class="wrapper1">
+        
+        <!-- logo -->
+        <div class="logoWrapper">
+          <img class="logo" src="./img/soundcloud.png" alt="">
+          <img class="logoText" src="./img/soundcloudText.png" alt="">
+        </div>
+        
+        <div class="wrapper2">
+          <!-- detail -->
+          <div class="detail" id="detail" ondrop="onDrop(event)" ondragover="onDragOver(event)">
+            <img src="./img/noCover.png" alt="" class="dCover">
             <div class="artist">
               <p class="dt">Artist</p>
-              <p class="dd">Depeche Mode</p>
+              <p class="dd">-</p>
             </div>
             <div class="title">
               <p class="dt">Title</p>
-              <p class="dd">Police of truth</p>
+              <p class="dd">-</p>
             </div>
             <div class="year">
               <p class="dt">Year</p>
-              <p class="dd">1996</p>
-            </div> -->
-            <!-- dynamic -->
+              <p class="dd">-</p>
+            </div>
           </div>
 
-          <div class="disk">
-            <!-- <div class="cover" id="cover">
+          <!-- disk -->
+          <div class="disk" ondrop="onDrop(event)" ondragover="onDragOver(event)">
+            <div class="cover" id="cover">
               <img src="./img/axis.png" alt="" class="axis" id="axis">
-            </div>             -->
+            </div>            
           </div>
           
+          <!-- controls -->
           <div class="controls">
-            <p class="time">00:00</p>
-            <div class="barTime"></div>
-            <p class="time">03:30</p>
-            <div class="play"></div>
+            <div class="start" id="btStart"></div>
+            <div class="bar" id="bar">
+              <p class="time" id="currentTime">00:00</p>
+              <div class="barTime" id="barTime"></div>
+              <p class="time" id="durationTime">00:00</p>
+            </div>
+            <div class="play" id="btPlay"></div>
           </div>
+
         </div>
-        <footer>design by perisDev</footer>
       </div>
     </section>
 
@@ -70,22 +79,19 @@
       </div>
       <div class="list" id="list">
         <!-- start - template -->
-        <div class="track">
-          <img src="./img/noCover.png" alt="" class="track_img">
-          <p>Police of truth</p>
-          <p>Depeche Mode</p>
+        <div data-id="id1" class="track" draggable="true" ondragstart="onDragStart(event);">
+          <img src="./img/noCover.png" alt="" class="track_img" draggable="false">
+          <p>-</p>
+          <p>-</p>
         </div>
         <!-- end - template -->
-        <div class="track">
-          <img src="./img/noCover.png" alt="" class="track_img">
-          <p>Police of truth</p>
-          <p>Depeche Mode</p>
-        </div>
       </div>
     </section>
   </main>
 
   <script src="./vendor/soundcloud_sdk-3.3.2.js"></script>
+  <script src="./vendor/moment.js"></script>
+  <script src="./js/player.js"></script>
   <script src="./js/app.js"></script>
 </body>
 
