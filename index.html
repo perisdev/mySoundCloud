@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Santi Peris, perisdev" />
+  <link rel="icon" type="image/png" href="./img/sound.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="./img/sound.png" />
   <title>mySoundCloud</title>
 
   <link rel="stylesheet" href="./css/main.css">
@@ -32,7 +34,7 @@
         
         <div class="wrapper2">
           <!-- detail -->
-          <div class="detail" id="detail" ondrop="onDrop(event)" ondragover="onDragOver(event)">
+          <div class="detail" id="detail">
             <img src="./img/noCover.png" alt="" class="dCover">
             <div class="artist">
               <p class="dt">Artist</p>
@@ -49,7 +51,7 @@
           </div>
 
           <!-- disk -->
-          <div class="disk" ondrop="onDrop(event)" ondragover="onDragOver(event)">
+          <div class="disk" id="disk">
             <div class="cover" id="cover">
               <img src="./img/axis.png" alt="" class="axis" id="axis">
             </div>            
@@ -57,13 +59,13 @@
           
           <!-- controls -->
           <div class="controls">
-            <div class="start" id="btStart"></div>
+            <img src="./img/start.png" alt="" class="start" id="btStart">
             <div class="bar" id="bar">
               <p class="time" id="currentTime">00:00</p>
               <div class="barTime" id="barTime"></div>
               <p class="time" id="durationTime">00:00</p>
             </div>
-            <div class="play" id="btPlay"></div>
+            <img src="./img/playPause.png" alt="" class="play" id="btPlay">
           </div>
 
         </div>
@@ -74,21 +76,22 @@
     <section class="results">
       <div class="track_head">
         <span></span>
-        <p><strong>TITTLE</strong></p>
-        <p><strong>ARTIST</strong></p>
+         <span>TITLE</span>
+         <span>ARTIST</span>
       </div>
       <div class="list" id="list">
         <!-- start - template -->
-        <div data-id="id1" class="track" draggable="true" ondragstart="onDragStart(event);">
+        <!-- <div data-id="id1" class="track" draggable="true" ondragstart="onDragStart(event);">
           <img src="./img/noCover.png" alt="" class="track_img" draggable="false">
           <p>-</p>
           <p>-</p>
-        </div>
+        </div> -->
         <!-- end - template -->
       </div>
     </section>
   </main>
 
+  <script src="./vendor/jquery-3.4.1.slim.min.js"></script>
   <script src="./vendor/soundcloud_sdk-3.3.2.js"></script>
   <script src="./vendor/moment.js"></script>
   <script src="./js/player.js"></script>

@@ -242,21 +242,17 @@ nav {
   align-self: center;
   height: 55px;
   width: 60px;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   cursor: pointer;
 }
 
 .play {
   grid-area: play;
   justify-self: start;
-  background-image: url('../img/playPause.png');
 }
 
 .start {
   grid-area: start;
   justify-self: end;
-  background-image: url('../img/start.png');
 }
 
 /* RESULTs section
@@ -318,7 +314,7 @@ p {
   color: #fff;
 }
 
-strong {
+span {
   font-size: 100%;
   color: var(--greenSpotify);
 }

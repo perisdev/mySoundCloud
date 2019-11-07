@@ -66,8 +66,8 @@ const search = (input) => {
 // milisecons to min:secs |->  61000 -> 01:01
 const getMinSec = (timeMs) => {
   let minSec = moment.duration(timeMs);
-  let min = (minSec.minutes() < 10)? '0' + minSec.minutes():minSec.minutes(); 
-  let sec = (minSec.seconds() < 10)? '0' + minSec.seconds():minSec.seconds();
+  let min = (minSec.minutes() < 10) ? '0' + minSec.minutes() : minSec.minutes();
+  let sec = (minSec.seconds() < 10) ? '0' + minSec.seconds() : minSec.seconds();
   return `${min}:${sec}`;
 }
 
@@ -90,62 +90,106 @@ const onDrop = (e) => {
 
   if (id >= 0) {
     createNodeDetail(listTracks[id]);
-    
+
     player.newPlayer(listTracks[id]);
     player.play();
-    
+
     listTracks[id].listView.remove();
   }
 };
 
-
 /* START - APP  
   ----------------------------------------------------------*/
-SC.initialize({
-  client_id: 'aa06b0630e34d6055f9c6f8beb8e02eb',
+$(document).ready(function () {
+
+  SC.initialize({
+    client_id: 'aa06b0630e34d6055f9c6f8beb8e02eb',
+  });
+
+
+  /* LISTENERs
+    --------------------------------------------------------- */
+  let input = $('#search:text');
+
+  input.keyup(e => (e.key === 'Enter' && input.val()) ? search(input.val()) : null);
+
+  $('#btSearch').click(() => input.val() ? search(input.val()) : null);
+
+  $('#btPlay').click(() => {
+    if (player.state == 'paused')
+      player.play();
+    else if (player.state == 'playing' || player.state == 'loading')
+      player.pause();
+  });
+
+  $('#btStart').click(() => {
+    if (player.stream) {
+      player.setPosition(0);
+      player.setBarPosition(0);
+    }
+  });
+
+  $('#barTime').click(e => {
+    if (player.stream) {
+      let bar = e.target;
+
+      let diffPx = e.clientX - bar.offsetLeft;
+      let barPercent = (diffPx * 100) / bar.offsetWidth;
+      let trackMs = (player.duration * barPercent) / 100;
+
+      player.setBarPosition(trackMs);
+      player.setPosition(trackMs);
+    }
+  });
+
+  // drag & drop events
+  document.getElementById('detail').addEventListener('drop', (e) => onDrop(e));
+  document.getElementById('detail').addEventListener('dragover', (e) => onDragOver(e));
+  document.getElementById('disk').addEventListener('drop', (e) => onDrop(e));
+  document.getElementById('disk').addEventListener('dragover', (e) => onDragOver(e));
 });
 
 
-/* LISTENERs
-  --------------------------------------------------------- */
-let input = document.getElementById('search');
-let btSearch = document.getElementById('btSearch');
+/** VANILLA */
 
-input.addEventListener('keyup', (e) => {
-  if (e.key === 'Enter' && input.value)
-    search(input.value);
-});
+  // let input = document.getElementById('search');
+  // let btSearch = document.getElementById('btSearch');
 
-btSearch.addEventListener('click', () => {
-  if (input.value)
-    search(input.value);
-});
+  // input.addEventListener('keyup', (e) => {
+  //   if (e.key === 'Enter' && input.value)
+  //     search(input.value);
+  // });
 
-document.getElementById('btPlay').addEventListener('click', () => {
-  if (player.state == 'paused')
-    player.play();
-  else if (player.state == 'playing' || player.state == 'loading')
-    player.pause();
-});
+  // btSearch.addEventListener('click', () => {
+  //   if (input.value)
+  //     search(input.value);
+  // });
 
-document.getElementById('btStart').addEventListener('click', () => {
-  if (player.stream) {
-    player.setPosition(0);
-    player.setBarPosition(0);
-  }
-});
+  // document.getElementById('btPlay').addEventListener('click', () => {
+  //   if (player.state == 'paused')
+  //     player.play();
+  //   else if (player.state == 'playing' || player.state == 'loading')
+  //     player.pause();
+  // });
 
-document.getElementById('barTime').addEventListener('click', (e) => {
+  // document.getElementById('btStart').addEventListener('click', () => {
+  //   if (player.stream) {
+  //     player.setPosition(0);
+  //     player.setBarPosition(0);
+  //   }
+  // });
 
-  if (player.stream) {
-    let bar = e.target;
+  // document.getElementById('barTime').addEventListener('click', (e) => {
 
-    let diffPx = e.clientX - bar.offsetLeft;
-    let barPercent = (diffPx * 100) / bar.offsetWidth;
-    let trackMs = (player.duration * barPercent) / 100;
+  //   if (player.stream) {
+  //     let bar = e.target;
 
-    player.setBarPosition(trackMs);
-    player.setPosition(trackMs);
-  }
-});
+  //     let diffPx = e.clientX - bar.offsetLeft;
+  //     let barPercent = (diffPx * 100) / bar.offsetWidth;
+  //     let trackMs = (player.duration * barPercent) / 100;
+
+  //     player.setBarPosition(trackMs);
+  //     player.setPosition(trackMs);
+  //   }
+  // });
 
