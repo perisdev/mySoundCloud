@@ -7,6 +7,7 @@
   --searchBackground: #000;
   --backList: #101010;
   --borderColor: #252525;
+  --instructionsColor: #303030;
   --BarTime: #808080;
 }
 
@@ -33,6 +34,7 @@ main {
 
 /* NAV section
 ------------------------------*/
+
 nav {
   grid-area: nav;
   background: transparent;
@@ -88,6 +90,7 @@ nav {
 
 /* LEFT
 ------------------------------*/
+
 .left {
   grid-area: left;
   width: 100%;
@@ -106,9 +109,9 @@ nav {
   grid-template-rows: 80px 1fr;
 }
 
-
 /* LOGO section
 ------------------------------*/
+
 .logoWrapper {
   background: var(--backList);
   border-radius: 10px 0 0 0;
@@ -124,7 +127,6 @@ nav {
   height: 20px;
 }
 
-
 .wrapper2 {
   display: grid;
   grid-template-columns: 1fr 432px 1fr;
@@ -136,12 +138,11 @@ nav {
 
 /* DETAILs section
 ------------------------------*/
+
 .detail {
   grid-area: detail;
-
   border-bottom: 1px solid var(--borderColor);
   margin-bottom: 20px;
-
   display: grid;
   grid-template-columns: 200px 2fr 1fr;
   grid-template-rows: 70px 70px;
@@ -160,6 +161,7 @@ nav {
   height: 140px;
   width: 140px;
   border-radius: 5px;
+  background: rgb(10, 10, 10);
 }
 
 .artist {
@@ -174,12 +176,12 @@ nav {
   grid-area: year;
 }
 
-
 /* DISK section
 ------------------------------*/
+
 .disk {
   grid-area: disk;
-  background-image: url('../img/disco.png');
+  background-image: url('../img/playerBase.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
@@ -188,7 +190,6 @@ nav {
 }
 
 .cover {
-  background-image: url('../img/noCover.png');
   width: 33%;
   height: 47.5%;
   background-repeat: no-repeat;
@@ -206,9 +207,9 @@ nav {
 
 /* CONTROLs section
 ------------------------------*/
+
 .controls {
   grid-area: controls;
-
   display: grid;
   grid-template-columns: 1fr 432px 1fr;
   grid-template-areas: 'start bar play';
@@ -257,6 +258,7 @@ nav {
 
 /* RESULTs section
 ------------------------------*/
+
 .results {
   grid-area: results;
   background: transparent;
@@ -284,6 +286,21 @@ nav {
   background: var(--backList);
   display: flex;
   flex-direction: column;
+}
+
+.instructions {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructions p {
+  display: block;
+  margin: 10%;
+  color: var(--instructionsColor);
+  font-size: 1.4em;
+  text-align: center;
 }
 
 .track {

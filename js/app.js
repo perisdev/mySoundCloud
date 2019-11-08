@@ -63,7 +63,7 @@ const search = (input) => {
   });
 }
 
-// milisecons to min:secs |->  61000 -> 01:01
+// milisecons to 'min:secs':  61000 -> '01:01'
 const getMinSec = (timeMs) => {
   let minSec = moment.duration(timeMs);
   let min = (minSec.minutes() < 10) ? '0' + minSec.minutes() : minSec.minutes();
@@ -150,7 +150,7 @@ $(document).ready(function () {
 });
 
 
-/** VANILLA */
+/** IN VANILLA */
 
   // let input = document.getElementById('search');
   // let btSearch = document.getElementById('btSearch');
