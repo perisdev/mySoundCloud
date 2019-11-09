@@ -86,7 +86,7 @@ const onDrop = (e) => {
   e.preventDefault();
 
   const id = listTracks.findIndex((item) => item.id == e.dataTransfer.getData('text'));
-  e.dataTransfer.clearData();
+  // e.dataTransfer.clearData();
 
   if (id >= 0) {
     createNodeDetail(listTracks[id]);

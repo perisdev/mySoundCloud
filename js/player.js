@@ -20,7 +20,7 @@ class Player {
   }
 
   newPlayer = track => {
-    document.getElementById('disk').setAttribute('style', `background-image:url('../img/disk.png')`);
+    document.getElementById('disk').setAttribute('style', `background-image:url('./img/disk.png')`);
     this.cover = track.cover;
     this.view = document.getElementById('cover').setAttribute('style', `background-image:url('${this.cover}')`);
 
